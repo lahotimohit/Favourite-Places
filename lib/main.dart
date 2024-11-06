@@ -1,8 +1,10 @@
+import 'package:favorite_places/screens/places.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 final colorscheme = ColorScheme.fromSeed(
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      home: const Text("welcome to app...."),
+      home: PlacesScreen(),
     );
   }
 }

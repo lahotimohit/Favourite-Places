@@ -13,6 +13,10 @@ class _AddPlacesList extends State<AddPlacesList> {
   final _titleController = TextEditingController();
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
