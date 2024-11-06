@@ -1,16 +1,27 @@
+import 'package:favorite_places/provider/user_places.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddPlacesList extends StatefulWidget {
+class AddPlacesList extends ConsumerStatefulWidget {
   const AddPlacesList({super.key});
 
   @override
-  State<AddPlacesList> createState() {
+  ConsumerState<AddPlacesList> createState() {
     return _AddPlacesList();
   }
 }
 
-class _AddPlacesList extends State<AddPlacesList> {
+class _AddPlacesList extends ConsumerState<AddPlacesList> {
   final _titleController = TextEditingController();
+
+  void _savePlace() {
+    final enteredTitle = _titleController.text;
+    if(enteredTitle.isEmpty) {
+      return;
+    }
+    ref.read(userPlacesProvider.notifier).addPlace(enteredTitle);
+    Navigator.of(context).pop();
+  }
 
   @override
   void dispose() {
@@ -35,7 +46,7 @@ class _AddPlacesList extends State<AddPlacesList> {
               height: 16,
             ),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: _savePlace,
               icon: const Icon(Icons.add),
               label: const Text("Add Place"),
             )
