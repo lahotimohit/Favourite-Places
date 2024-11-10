@@ -11,9 +11,11 @@ class PlacesDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(place.title),
       ),
-      body: (
-        Image.file(place.image, fit: BoxFit.cover, width: double.infinity, height: double.infinity,)
-      ),
+      body: Stack(
+        children: [
+          Image.file(place.image, fit: BoxFit.cover, width: double.infinity, height: double.infinity,),
+        ],
+        ),
     );
   }
 }
